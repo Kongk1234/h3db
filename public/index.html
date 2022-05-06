@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./halfmoon.min.js"></script>
+    <link rel="stylesheet" href="./halfmoon.min.css">
+    <script src="https://cdn.anychart.com/releases/8.6.0/js/anychart-core.min.js"></script>
+    <script src ="https://cdn.anychart.com/releases/8.6.0/js/anychart-gantt.min.js"></script>
+    <script src="./index.js"></script>
+    <link rel="stylesheet" href="./index.css">
+
+</head>
+<body onload=getData()>
+    <div class="page-wrapper with-navbar">
+      <nav class="navbar">
+        <ul class="navbar-nav d-none d-md-flex"> <!-- d-none = display: none, d-md-flex = display: flex on medium screens and up (width > 768px) -->
+            <li class="nav-item">
+            <a href="/" class="nav-link">Forside</a>
+            </li>
+            <li class="nav-item">
+            <a href="/createUser" class="nav-link">Opret bruger</a>
+            </li>
+        </ul>
+        <!-- Navbar content (with the dropdown menu) -->
+        <div class="navbar-content d-md-none ml-auto"> <!-- d-md-none = display: none on medium screens and up (width > 768px), ml-auto = margin-left: auto -->
+        </div>
+      </nav>
+  
+      <!-- Content wrapper -->
+      <div class="content-wrapper">   
+        <div id="container"></div>
+
+      </div>
+    </div>
+  
+    <!-- Requires halfmoon.js for the dropdowns -->
+  </body>
+</html>
