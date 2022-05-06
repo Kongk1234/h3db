@@ -13,28 +13,36 @@
 
 </head>
 <body onload=getData()>
-    <div class="page-wrapper with-navbar">
-      <nav class="navbar">
-        <ul class="navbar-nav d-none d-md-flex"> <!-- d-none = display: none, d-md-flex = display: flex on medium screens and up (width > 768px) -->
-            <li class="nav-item">
-            <a href="/" class="nav-link">Forside</a>
-            </li>
-            <li class="nav-item">
-            <a href="/createUser" class="nav-link">Opret bruger</a>
-            </li>
-        </ul>
-        <!-- Navbar content (with the dropdown menu) -->
-        <div class="navbar-content d-md-none ml-auto"> <!-- d-md-none = display: none on medium screens and up (width > 768px), ml-auto = margin-left: auto -->
-        </div>
-      </nav>
   
       <!-- Content wrapper -->
       <div class="content-wrapper">   
-        <div id="container"></div>
+        <div class="card" style="height: 50%;">
+          <div id="container"></div>
+        </div>
 
-      </div>
-    </div>
-  
+        <input type="text" class="form-control" placeholder="Create user" id="createUser" >
+        <button class="btn" type="button" onclick="createUser()">Create</button>
+
+        <input type="text" class="form-control" placeholder="Delete user" id="deleteUser" >
+        <button class="btn" type="button" onclick="deleteUser()">Delete</button>
+
+        <input type="text" class="form-control" placeholder="Name" id="name" >
+        <input type="text" class="form-control" placeholder="task" id="task" >
+        <button class="btn" type="button" onclick="addToTask()">Add to task</button>
+
+        <input type="text" class="form-control" placeholder="Create task" id="createTask" >
+        <input type="date" class="form-control"  id="startDate" >
+        <input type="date" class="form-control"  id="endDate" >
+        <button class="btn" type="button" onclick="createTask()">Create Task</button>
+
+        <input type="text" class="form-control" placeholder="Delete Task"  id="deleteTask" >
+        <button class="btn" type="button" onclick="deleteTask()">Delete task</button>
+
+        <input type="text" class="form-control" placeholder="New name"  id="newName" >
+        <input type="text" class="form-control" placeholder="Old Name"  id="oldName" >
+
+        <button class="btn" type="button" onclick="updateUser()">Update user</button>
+      </div>  
     <!-- Requires halfmoon.js for the dropdowns -->
   </body>
 </html>

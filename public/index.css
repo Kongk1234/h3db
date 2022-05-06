@@ -6,3 +6,7 @@ body,
   margin: 0;
   padding: 0;
 }
+
+#createUser, #deleteUser, #name, #task, #createTask{
+    width: 20%;
+}

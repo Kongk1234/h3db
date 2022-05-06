@@ -30,7 +30,7 @@ app.get('/getSpecTask', (req, res) => {
     });
 });
 
-app.get('/getUserTask', (req, res) => {
+app.post('/getUserTask', (req, res) => {
     conn.query("SELECT project.task, task.taskName, project.person, person.name FROM project LEFT JOIN person ON project.person = person.id LEFT JOIN task ON project.task = task.id WHERE task.id = (select id from task where taskName = ?)",req.body.taskName, function (err, result) {
         if (err) throw err;
         res.send(result)
@@ -38,7 +38,7 @@ app.get('/getUserTask', (req, res) => {
 });
 
 app.get('/allTask', (req, res) => {
-    conn.query("SELECT taskName FROM task", function (err, result) {
+    conn.query("SELECT * FROM task", function (err, result) {
         if (err) throw err;
         res.send(result)
     });
@@ -68,6 +68,7 @@ app.post('/addToTask', (req, res) => {
 
 
 app.put('/updateUser', (req, res) => {
+    console.log(req.body);
     conn.query("update person set name = ? where name = ?;", [req.body.newName, req.body.oldName], function (err, result) {
         if (err) throw err;
         res.send(result)
