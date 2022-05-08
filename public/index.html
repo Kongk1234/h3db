@@ -13,35 +13,24 @@
 
 </head>
 <body onload=getData()>
-  
       <!-- Content wrapper -->
       <div class="content-wrapper">   
         <div class="card" style="height: 50%;">
           <div id="container"></div>
         </div>
+        <center>
+          <select class="form-control" name="choose" id="choose">
+            <option value="Add" selected="selected">Add</option>
+            <option value="Users" selected="selected">Users</option>
+            <option value="Tasks" selected="selected">Tasks</option>
+            <option value="Show" selected="selected">Show</option>
+          </select>
 
-        <input type="text" class="form-control" placeholder="Create user" id="createUser" >
-        <button class="btn" type="button" onclick="createUser()">Create</button>
+          <button class="btn" id="chooseBtn" type="button"  onclick="getChoose()">Choose</button>
+        </center>
+        <div class="card" id="cards">
 
-        <input type="text" class="form-control" placeholder="Delete user" id="deleteUser" >
-        <button class="btn" type="button" onclick="deleteUser()">Delete</button>
-
-        <input type="text" class="form-control" placeholder="Name" id="name" >
-        <input type="text" class="form-control" placeholder="task" id="task" >
-        <button class="btn" type="button" onclick="addToTask()">Add to task</button>
-
-        <input type="text" class="form-control" placeholder="Create task" id="createTask" >
-        <input type="date" class="form-control"  id="startDate" >
-        <input type="date" class="form-control"  id="endDate" >
-        <button class="btn" type="button" onclick="createTask()">Create Task</button>
-
-        <input type="text" class="form-control" placeholder="Delete Task"  id="deleteTask" >
-        <button class="btn" type="button" onclick="deleteTask()">Delete task</button>
-
-        <input type="text" class="form-control" placeholder="New name"  id="newName" >
-        <input type="text" class="form-control" placeholder="Old Name"  id="oldName" >
-
-        <button class="btn" type="button" onclick="updateUser()">Update user</button>
+        </div>
       </div>  
     <!-- Requires halfmoon.js for the dropdowns -->
   </body>

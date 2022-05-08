@@ -23,8 +23,8 @@ conn.connect(function(err) {
 
 app.use('/', express.static('./public', {extensions: false}));
 
-app.get('/getSpecTask', (req, res) => {
-    conn.query("select * from project where person = (select id from person where person.name = ?)", req.body.name, function (err, result) {
+app.post('/getSpecTask', (req, res) => {
+    conn.query("SELECT project.task, task.taskName FROM project LEFT JOIN person ON project.person = person.id LEFT JOIN task ON project.task = task.id WHERE person.id = (select id from person where person.name = ?)", req.body.name, function (err, result) {
         if (err) throw err;
         res.send(result)
     });
@@ -39,6 +39,13 @@ app.post('/getUserTask', (req, res) => {
 
 app.get('/allTask', (req, res) => {
     conn.query("SELECT * FROM task", function (err, result) {
+        if (err) throw err;
+        res.send(result)
+    });
+});
+
+app.get('/allUsers', (req, res) => {
+    conn.query("SELECT name FROM person", function (err, result) {
         if (err) throw err;
         res.send(result)
     });
@@ -68,7 +75,6 @@ app.post('/addToTask', (req, res) => {
 
 
 app.put('/updateUser', (req, res) => {
-    console.log(req.body);
     conn.query("update person set name = ? where name = ?;", [req.body.newName, req.body.oldName], function (err, result) {
         if (err) throw err;
         res.send(result)
@@ -76,7 +82,7 @@ app.put('/updateUser', (req, res) => {
 });
 
 app.put('/updateTask', (req, res) => {
-    conn.query("update task set taskName = ? where taskName = ?", [req.body.newTaskName, req.body.oldTaskName], function (err, result) {
+    conn.query("update task set taskName = ?, timeStart = ?, timeEnd = ? where taskName = ?", [req.body.newName, req.body.timeStart, req.body.timeEnd, req.body.oldName], function (err, result) {
         if (err) throw err;
         res.send(result)
     });
@@ -91,7 +97,7 @@ app.delete('/deleteUser', (req, res) => {
 });
 
 app.delete('/removeFromTask', (req, res) => {
-    conn.query("delete from project where person = (select id from person where person.name = ?)", req.body.name, function (err, result) {
+    conn.query("delete from project where person = (select id from person where person.name = ?) and task = (select id from task where task.taskName = ?)", [req.body.name, req.body.taskName], function (err, result) {
         if (err) throw err;
         res.send(result)
     });
